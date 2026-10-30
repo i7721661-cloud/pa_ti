@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Te Estoy Conociendo 💙</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#14284b">
+<meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Para Kelyneth">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><link rel="icon" type="image/png" href="icons/icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;1,500&family=Great+Vibes&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--b:#4a90e2;--sb:#7bb3f0;--lb:#e8f1f8;--g:#d4af37;--pk:#f4d4e6;--n:#1d3b6e;--ink:#14284b}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font:16px/1.5 Nunito,system-ui,sans-serif;color:#fff;background:radial-gradient(ellipse at 20% 0,#2d5ca8,transparent 60%),linear-gradient(#14284b,#1d3b6e 70%,#27508f) fixed;min-height:100vh;padding-bottom:84px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:500}
+.script{font-family:'Great Vibes',cursive;font-weight:400}
+#stars{position:fixed;inset:0;pointer-events:none;z-index:0}
+.star{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;animation:tw 3s infinite alternate}
+@keyframes tw{to{opacity:.15}}
+main,header{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:0 18px}
+#login{position:fixed;inset:0;z-index:99;background:linear-gradient(#14284b,#2d5ca8);display:flex;align-items:center;justify-content:center;padding:20px}
+.lbox{background:var(--lb);color:var(--ink);border-radius:28px 28px 28px 4px;padding:40px 28px;max-width:380px;width:100%;text-align:center;box-shadow:0 20px 60px #0006}
+.lbox h1{font-size:3.2rem;color:var(--b);line-height:1.1}
+input[type=password],input[type=text],textarea{width:100%;padding:12px 14px;border:2px solid var(--sb);border-radius:14px;font:inherit;color:var(--ink);background:#fff;margin:10px 0}
+textarea{resize:vertical;min-height:80px}
+.btn{border:0;border-radius:999px;padding:11px 24px;font:700 1rem Nunito,sans-serif;cursor:pointer;background:var(--b);color:#fff;transition:transform .15s}
+.btn:active{transform:scale(.95)}
+.btn.gold{background:var(--g);color:var(--ink)}
+.btn.ghost{background:transparent;border:2px solid var(--sb);color:var(--b)}
+.err{color:#c0392b;min-height:1.4em;font-size:.9rem}
+.hero{text-align:center;padding:38px 0 16px}
+.hero h1{font-size:3.1rem;line-height:1.1}
+.hero p{opacity:.85}
+.since{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:340px;margin:16px auto}
+@media(min-width:560px){.since{grid-template-columns:repeat(6,1fr);max-width:560px}}
+.since div{background:#ffffff1c;border:1px solid #ffffff40;border-radius:16px;padding:8px 6px}
+.since b{display:block;font:500 1.6rem Fraunces,serif;color:var(--g)}
+.since span{font-size:.75rem;opacity:.8}
+.out{position:absolute;top:14px;right:18px;background:none;border:1px solid #fff8;color:#fff;border-radius:999px;padding:5px 12px;cursor:pointer;font:inherit;font-size:.85rem}
+.card{background:var(--lb);color:var(--ink);border-radius:26px 26px 26px 6px;padding:26px 22px;margin:16px 0;box-shadow:0 14px 34px #0004}
+.card h2{color:var(--b);font-size:1.7rem;margin-bottom:6px}
+.card p{margin:8px 0}
+.card.letter p{font-family:Fraunces,serif;font-size:1.12rem;line-height:1.8}
+.sub{color:#4a5d7a;font-size:.95rem}
+nav{position:fixed;bottom:0;left:0;right:0;z-index:50;background:#0f2145ee;backdrop-filter:blur(10px);display:flex;overflow-x:auto;padding:6px 8px calc(6px + env(safe-area-inset-bottom));border-top:1px solid #ffffff30;scrollbar-width:none}
+nav button{flex:1 0 64px;background:none;border:0;color:#cfe0f7;font:inherit;font-size:.72rem;padding:6px 4px;border-radius:14px;cursor:pointer}
+nav button i{display:block;font-style:normal;font-size:1.4rem}
+nav button.on{background:#ffffff20;color:var(--g)}
+.tab{display:none}.tab.on{display:block}
+.note{background:#fff3c4;border-radius:6px;padding:24px 18px;font:italic 1.25rem/1.5 Fraunces,serif;text-align:center;margin:16px 0;transform:rotate(-1deg);box-shadow:0 8px 18px #0003;animation:pop .5s}
+@keyframes pop{from{transform:scale(.4) rotate(8deg);opacity:0}}
+.jar{font-size:5.5rem;background:none;border:0;cursor:pointer;display:block;margin:6px auto;transition:transform .2s}
+.jar:active{transform:rotate(-12deg) scale(.9)}
+.item{background:#fff;border:1px solid var(--sb);border-radius:14px;padding:12px 14px;margin:10px 0}
+.item small{color:#6a7b95;display:block}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.wheelbox{position:relative;width:240px;height:240px;margin:14px auto}
+.wheel{width:100%;height:100%;border-radius:50%;border:6px solid var(--g);background:conic-gradient(var(--b) 0 45deg,var(--pk) 0 90deg,var(--sb) 0 135deg,#fff 0 180deg,var(--b) 0 225deg,var(--pk) 0 270deg,var(--sb) 0 315deg,#fff 0 360deg);transition:transform 4s cubic-bezier(.12,.7,.1,1);display:grid;place-items:center;font-size:2.4rem}
+.ptr{position:absolute;top:-14px;left:50%;margin-left:-12px;border:12px solid transparent;border-top:24px solid var(--g)}
+.coupon{border:2px dashed var(--b);border-radius:16px;padding:14px;margin:12px 0;background:#fff;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.coupon.used{opacity:.5;border-color:#999}
+.coupon b{font-size:1.1rem}
+.tabs2{display:flex;gap:8px;margin:10px 0;flex-wrap:wrap}
+.tabs2 button{border:2px solid var(--sb);background:#fff;color:var(--b);border-radius:999px;padding:6px 14px;font:700 .9rem Nunito;cursor:pointer}
+.tabs2 button.on{background:var(--b);color:#fff}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.mc{aspect-ratio:1;border-radius:14px;border:0;background:var(--b);color:#fff;font-size:1.8rem;cursor:pointer;transition:transform .3s}
+.mc.up{background:#fff;transform:rotateY(0)}
+.mc.ok{background:var(--pk)}
+#field{position:relative;height:300px;background:linear-gradient(#cfe3f9,#fff);border-radius:16px;overflow:hidden;margin-top:10px;touch-action:manipulation}
+.fall{position:absolute;top:-40px;font-size:2rem;cursor:pointer;user-select:none;transition:top 3.2s linear}
+.moms{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.mom{background:#fff;padding:10px;border-radius:6px;box-shadow:0 8px 18px #0003}
+.mom img{width:100%;aspect-ratio:1;object-fit:cover;display:block;border-radius:3px}
+.mom textarea{min-height:56px;font-size:.9rem;margin:8px 0 4px}
+.ask{text-align:center;min-height:300px}
+.ask h2{font-size:1.9rem;margin:10px 0 24px}
+#no{position:relative}
+.heart{position:fixed;z-index:200;pointer-events:none;font-size:1.6rem;animation:up 2.4s ease-out forwards}
+@keyframes up{to{transform:translate(var(--dx),-85vh) rotate(40deg);opacity:0}}
+#toast{position:fixed;left:50%;bottom:96px;transform:translate(-50%,20px);background:var(--g);color:var(--ink);padding:10px 18px;border-radius:999px;font-weight:700;opacity:0;transition:.3s;z-index:300;pointer-events:none}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+.e3{width:1.15em;height:1.15em;vertical-align:-.2em;filter:drop-shadow(0 3px 3px #0005);pointer-events:none}
+.e-fb{filter:drop-shadow(0 3px 2px #0005)}
+#hh{font-size:3.4rem;cursor:pointer;display:inline-block;animation:bob 3s ease-in-out infinite;user-select:none}
+@keyframes bob{50%{transform:translateY(-8px) rotate(-4deg)}}
+.float{position:fixed;bottom:-12vh;z-index:0;pointer-events:none;font-size:1.8rem;opacity:.55;animation:fl linear infinite}
+@keyframes fl{to{transform:translate(30px,-125vh) rotate(40deg)}}
+.sp{position:fixed;z-index:250;width:8px;height:8px;border-radius:50%;background:var(--g);box-shadow:0 0 8px 2px #d4af37aa;pointer-events:none;animation:spf .7s forwards}
+@keyframes spf{to{transform:translate(var(--dx),var(--dy)) scale(.2);opacity:0}}
+.shoot{position:fixed;top:12%;left:-15%;width:140px;height:3px;background:linear-gradient(90deg,transparent,#fff);transform:rotate(25deg);animation:sh 1.3s ease-out forwards;z-index:250;pointer-events:none}
+@keyframes sh{to{left:110%;top:50%;opacity:0}}
+.st:hover circle{fill:#fff}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--g);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.float{display:none}*{animation:none!important;transition:none!important}}
+</style></head><body>
+<div id="stars"></div>
+<div id="login"><div class="lbox"><h1 class="script">Bienvenida</h1><p class="sub">Escribe tu contraseña para entrar 💙</p>
+<p class="sub" style="margin-top:6px">Pista: cómo te digo de cariño</p>
+<input type="password" id="pw" placeholder="Contraseña" autocomplete="off" autocapitalize="none" enterkeyhint="go"><div class="err" id="err"></div>
+<button class="btn" id="go">Entrar</button></div></div>
+
+<header><button class="out" id="out">Salir</button>
+<div class="hero"><div id="hh" title="Tócame">💙</div><p class="script" style="font-size:1.8rem" id="hi"></p><h1 class="script">Te Estoy Conociendo 💙</h1><p>Kelyneth, cada detalle es para ti</p>
+<div class="since" id="since"></div></div></header>
+
+<main>
+<section class="tab on" id="t-letters"><div id="letters"></div>
+<div class="card"><h2>Tu espacio se guarda solo</h2><p class="sub">Todo lo que guardes aquí (favoritos, respuestas, fotos y vales) queda en este dispositivo y tu sesión sigue abierta cuando vuelvas.</p>
+<div class="row"><button class="btn gold" id="inst" style="display:none">Instalar como app</button><button class="btn ghost" id="exp">Descargar copia</button><button class="btn ghost" onclick="imp.click()">Restaurar copia</button><input type="file" id="imp" accept=".json" hidden></div></div></section>
+
+<section class="tab" id="t-ask"><div class="card ask"><div style="font-size:3rem">💙</div>
+<h2>¿Quieres seguir construyendo momentos bonitos conmigo?</h2>
+<div class="row" style="justify-content:center;gap:20px;min-height:70px" id="btns"><button class="btn gold" id="yes" style="font-size:1.2rem">¡Sí, muchísimo! 🥰</button><button class="btn ghost" id="no">Déjame pensarlo</button></div><p id="askres" style="margin-top:20px;font-family:Fraunces,serif"></p></div></section>
+
+<section class="tab" id="t-jar"><div class="card" style="text-align:center"><h2>El Frasco de Mensajes 🫙</h2><p class="sub">Toca el frasco para sacar un papelito nuevo.</p>
+<button class="jar" id="jar" aria-label="Sacar mensaje">🫙</button><div id="noteOut"></div></div>
+<div class="card"><h2>Mis mensajes favoritos ❤️</h2><div id="favs"></div></div></section>
+
+<section class="tab" id="t-talk"><div class="card"><h2>Ruleta de preguntas 🎡</h2><p class="sub">Gira y responde si quieres. Si hoy no tienes ganas, puedes saltarla.</p>
+<div class="wheelbox"><div class="ptr"></div><div class="wheel" id="wheel">💙</div></div>
+<div style="text-align:center"><button class="btn" id="spin">Girar</button></div><div id="qbox"></div></div>
+<div class="card"><h2>Mis respuestas 📖</h2><div id="answers"></div></div></section>
+
+<section class="tab" id="t-vales"><div class="card"><h2>Vales de hoy 🎟️</h2><p class="sub">Cada día salen vales nuevos y, al canjear uno, llega otro en su lugar.</p><div id="coupons"></div></div>
+<div class="card"><h2>Canjeados ✅</h2><div id="usedc"></div></div></section>
+
+<section class="tab" id="t-games"><div class="card"><h2>Minijuegos 🎮</h2>
+<div class="tabs2"><button class="on" data-g="mem">Parejas</button><button data-g="catch">Atrapa corazones</button><button data-g="star">Constelación</button></div><div id="game"></div></div></section>
+
+<section class="tab" id="t-wish"><div class="card"><h2>Pide un deseo 🌠</h2><p class="sub">Escríbelo, lánzalo a las estrellas y queda guardado.</p><textarea id="wt" placeholder="Mi deseo es…"></textarea><button class="btn gold" id="wb">Lanzar a las estrellas</button><div id="wl"></div></div>
+<div class="card"><h2>Cápsula del tiempo ⏳</h2><p class="sub">Escribe un mensaje para tu yo del futuro. Queda cerrado hasta la fecha que elijas.</p><textarea id="ct" placeholder="Querida yo del futuro…"></textarea><div class="row"><input type="date" id="cd" style="width:auto;margin:0"><button class="btn" id="cb">Cerrar cápsula</button></div><div id="cl"></div></div></section>
+<section class="tab" id="t-moms"><div class="card"><h2>Momentos favoritos del día 📸</h2><p class="sub">Sube una foto y cuéntame por qué fue especial.</p>
+<input type="file" id="pic" accept="image/*" style="margin:10px 0;display:block;max-width:100%"><textarea id="cmt" placeholder="Escribe algo sobre este momento…"></textarea><button class="btn" id="addm">Guardar momento</button></div><div class="moms" id="moms"></div></section>
+</main>
+
+<nav id="nav"><button class="on" data-t="letters"><i>💌</i>Cartas</button><button data-t="jar"><i>🫙</i>Frasco</button><button data-t="talk"><i>🎡</i>Ruleta</button><button data-t="vales"><i>🎟️</i>Vales</button><button data-t="games"><i>🎮</i>Juegos</button><button data-t="moms"><i>📸</i>Momentos</button><button data-t="wish"><i>🌠</i>Deseos</button><button data-t="ask"><i>💙</i>Pregunta</button></nav>
+<div id="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const KEY='kel_v2',START=new Date(2022,9,3);
+let S;try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+S=Object.assign({wish:[],caps:[],ok:0,favs:[],ans:{},cp:{day:'',show:[],used:[]},best:{catch:0,word:0},yes:''},S||{});
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){toast('No hay espacio para guardar más')}};
+const toast=t=>{const e=$('#toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2000)};
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+const day=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+if(navigator.storage&&navigator.storage.persist)navigator.storage.persist();
+
+/* estrellas */
+for(let i=0;i<60;i++){const s=el('i','star');s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*3}s`;$('#stars').append(s)}
+
+/* login */
+const enter=()=>{$('#login').style.display='none';const h=new Date().getHours();$('#hi').textContent=h<12?'Buenos días, Kelyneth':h<19?'Buenas tardes, Kelyneth':'Buenas noches, Kelyneth';boot()};
+const chk=()=>{const v=$('#pw').value.trim().toLowerCase();if(['chinita','mi chinita'].includes(v)){S.ok=1;save();enter()}else $('#err').textContent='Contraseña incorrecta, inténtalo otra vez'};
+$('#go').onclick=chk;$('#pw').addEventListener('keydown',e=>{if(e.key==='Enter')chk()});
+$('#out').onclick=()=>{S.ok=0;save();location.reload()};
+
+/* contador */
+const addM=n=>new Date(2022,9+n,3);
+function tick(){const n=new Date();let mo=(n.getFullYear()-2022)*12+n.getMonth()-9;if(addM(mo)>n)mo--;const ms=n-addM(mo),v=[[Math.floor(mo/12),'años'],[mo%12,'meses'],[Math.floor(ms/864e5),'días'],[Math.floor(ms/36e5)%24,'horas'],[Math.floor(ms/6e4)%60,'minutos'],[Math.floor(ms/1e3)%60,'segundos']];
+$('#since').innerHTML=v.map(x=>`<div><b>${x[0]}</b><span>${x[1]}</span></div>`).join('')}
+
+/* navegación */
+$('#nav').onclick=e=>{const b=e.target.closest('button');if(!b)return;$$('#nav button').forEach(x=>x.classList.toggle('on',x==b));$$('.tab').forEach(x=>x.classList.toggle('on',x.id=='t-'+b.dataset.t));stopCatch();scrollTo(0,0)};
+
+/* cartas: agrega aquí más cartas con { t:'Título', p:['párrafo 1','párrafo 2'] } */
+const LETTERS=[{t:'Para Kelyneth…',p:['Desde el 3 de octubre de 2022, mi vida cambió por completo de una manera muy bonita. Cada momento compartido, cada risa y cada conversación contigo se han vuelto de mis recuerdos favoritos.','Quise armar este espacio especialmente para ti, un lugar donde queden guardados nuestros pequeños detalles, notas secretas, juegos y momentos favoritos para que puedas consultarlos cuando quieras.']}];
+function letters(){const w=$('#letters');w.innerHTML='';LETTERS.forEach(l=>{const c=el('div','card letter');c.append(el('h2','',l.t));l.p.forEach(x=>c.append(el('p','',x)));w.append(c)})}
+
+/* frasco */
+const MSG=["Hoy te pienso un poquito más que ayer.","Tu risa es mi sonido favorito del mundo.","Si hoy fue pesado, descansa en mí.","Eres mi lugar tranquilo.","Me encanta cómo te emocionas con las cosas pequeñas.","Contigo hasta lo normal se vuelve bonito.","Ojalá este mensaje te abrace un ratito.","Gracias por existir tal como eres.","Prometo escucharte siempre, aunque sea la misma historia otra vez.","Eres lo mejor que me pasó en octubre de 2022.","Tus ojos tienen un brillo que no sé explicar.","Hoy toca tomar agua y acordarte de que te quiero.","Contigo quiero más mañanas.","Eres suficiente, de sobra y para mí, perfecta.","Si pudiera guardar un día contigo, elegiría cualquiera.","Me haces querer ser mejor persona.","Tu sonrisa me arregla el día entero.","No hay distancia que me quite las ganas de ti.","Estoy orgulloso de todo lo que logras.","Eres mi casualidad favorita.","Respira. Lo estás haciendo bien.","Tengo guardado un beso para ti, cobra cuando quieras.","Me gustas en las mañanas, en las noches y en medio.","Eres mi pensamiento bonito antes de dormir.","Cuando dudes de ti, acuérdate de cómo te veo yo.","Mi parte favorita del día es hablar contigo.","Cada detalle tuyo me parece un pequeño tesoro.","Gracias por dejarme conocerte poco a poco.","Hoy te mando un abrazo largo, de esos que se sienten.","Aquí estoy, hoy y todos los días."];
+let lastN=-1;
+$('#jar').onclick=()=>{let i;do i=Math.floor(Math.random()*MSG.length);while(i==lastN);lastN=i;const m=MSG[i],o=$('#noteOut');o.innerHTML='';const n=el('div','note',m),b=el('button','btn gold',S.favs.includes(m)?'💛 Ya es favorito':'🤍 Guardar en favoritos');
+b.onclick=()=>{if(!S.favs.includes(m)){S.favs.unshift(m);save();b.textContent='💛 Ya es favorito';renderFavs()}};n.append(el('br'),b);o.append(n)};
+function renderFavs(){const f=$('#favs');f.innerHTML='';if(!S.favs.length)f.append(el('p','sub','Aún no tienes favoritos. Guarda un mensaje del frasco.'));S.favs.forEach(m=>{const d=el('div','item row');d.style.justifyContent='space-between';d.append(el('span','',m));const x=el('button','btn ghost','Quitar');x.onclick=()=>{S.favs=S.favs.filter(y=>y!=m);save();renderFavs()};d.append(x);f.append(d)})}
+
+/* ruleta */
+const QS=["¿Cuál es tu recuerdo favorito de la infancia?","¿Qué comida te hace feliz al instante?","¿Qué canción no te cansas de escuchar?","¿Qué sueño te gustaría cumplir algún día?","¿Cuál es tu lugar favorito en el mundo?","¿Qué te da más tranquilidad cuando estás estresada?","¿Cómo es un día perfecto para ti?","¿Qué es lo que más te gusta de ti?","¿Qué película podrías ver mil veces?","¿Qué te da miedo y no le dices a nadie?","¿Qué detalle te hace sentir querida?","¿A dónde viajarías conmigo?","¿Qué te hace reír sin parar?","¿Qué hábito tuyo te encanta?","¿Qué te gustaría que hiciéramos juntos pronto?","¿Cuál ha sido tu mejor día este año?","¿Qué cosa pequeña te alegra el día?","¿Qué te gustaría que supiera de ti?","¿Cuál es tu mayor meta ahora?","¿Qué aprendiste últimamente que te sorprendió?"];
+let rot=0,cur=null;
+$('#spin').onclick=()=>{let pool=QS.map((q,i)=>i).filter(i=>!(S.ans[i]&&S.ans[i].t));if(!pool.length)pool=QS.map((q,i)=>i);cur=rnd(pool);rot+=1080+Math.random()*360;$('#wheel').style.transform=`rotate(${rot}deg)`;$('#qbox').innerHTML='';setTimeout(()=>showQ(cur),4100)};
+function showQ(i){const b=$('#qbox');b.innerHTML='';b.append(el('h3','',QS[i]));const t=el('textarea');t.placeholder='Escribe aquí si quieres…';t.value=(S.ans[i]&&S.ans[i].t)||'';const r=el('div','row'),a=el('button','btn','Guardar respuesta'),s=el('button','btn ghost','Prefiero no responder');
+a.onclick=()=>{if(!t.value.trim())return toast('Escribe algo o elige saltarla');S.ans[i]={t:t.value.trim(),d:day()};save();toast('Respuesta guardada 💙');renderAns();b.innerHTML=''};
+s.onclick=()=>{if(!(S.ans[i]&&S.ans[i].t)){S.ans[i]={t:'',skip:1,d:day()};save()}b.innerHTML='';toast('Sin presión, puedes volver cuando quieras');renderAns()};
+r.append(a,s);b.append(t,r)}
+function renderAns(){const a=$('#answers');a.innerHTML='';const k=Object.keys(S.ans).filter(i=>S.ans[i].t);if(!k.length)a.append(el('p','sub','Tus respuestas aparecerán aquí.'));k.forEach(i=>{const d=el('div','item');d.append(el('b','',QS[i]),el('p','',S.ans[i].t),el('small','',S.ans[i].d));const e=el('button','btn ghost','Editar');e.onclick=()=>{showQ(i);$('#qbox').scrollIntoView({behavior:'smooth'})};d.append(e);a.append(d)})}
+
+/* vales */
+const VALES=["Un abrazo de 1 minuto sin soltar","Elegir la película de la noche","Un masaje de manos","Un mensaje de buenas noches con audio","Una cita de helado","Cumplir un antojo tuyo","Un día sin discutir por nada","Una playlist hecha solo para ti","Una carta escrita a mano","Una videollamada sin prisa","Elegir el plan del fin de semana","Un cumplido por cada hora del día","Una foto mía haciendo lo que pidas","Que yo cocine (o pida) tu comida favorita","Un “te quiero” en un idioma a tu elección","Un paseo al atardecer","Un desayuno sorpresa","Un baile en la sala","Un secreto que nunca te he contado","Una noche de juegos de mesa","Un deseo pequeño concedido","Una canción dedicada","Un día de mimos sin quejarme","Una promesa de cumplir contigo esta semana"];
+function pickV(n){const ex=[...S.cp.show,...S.cp.used];let p=VALES.map((v,i)=>i).filter(i=>!ex.includes(i));if(p.length<n){S.cp.show=S.cp.show.filter(i=>S.cp.used.includes(i));p=VALES.map((v,i)=>i).filter(i=>!S.cp.used.includes(i)&&!S.cp.show.includes(i))}const o=[];while(o.length<n&&p.length){const i=p.splice(Math.floor(Math.random()*p.length),1)[0];o.push(i)}return o}
+function vales(){if(S.cp.day!==day()){S.cp.show=pickV(3);S.cp.day=day();save()}while(S.cp.show.length<3){const x=pickV(1);if(!x.length)break;S.cp.show.push(x[0])}save();const c=$('#coupons');c.innerHTML='';S.cp.show.forEach(i=>{const d=el('div','coupon'),t=el('b','',VALES[i]),b=el('button','btn','Canjear');b.onclick=()=>{S.cp.used.unshift(i);S.cp.show=S.cp.show.filter(x=>x!=i);S.cp.log=S.cp.log||{};S.cp.log[i]=day();save();toast('¡Vale canjeado! Dímelo para cumplirlo 🎉');vales()};d.append(t,b);c.append(d)});const u=$('#usedc');u.innerHTML='';if(!S.cp.used.length)u.append(el('p','sub','Todavía no has canjeado ninguno.'));S.cp.used.forEach(i=>{const d=el('div','coupon used');d.append(el('span','',VALES[i]),el('small','',(S.cp.log&&S.cp.log[i])||''));u.append(d)})}
+
+/* juegos */
+let gtimer,gspawn;
+function stopCatch(){clearInterval(gtimer);clearInterval(gspawn)}
+$('.tabs2').onclick=e=>{const b=e.target.closest('button');if(!b)return;$$('.tabs2 button').forEach(x=>x.classList.toggle('on',x==b));stopCatch();({mem,catch:catchG,star:stars})[b.dataset.g]()};
+function mem(){const E=['💙','🌹','🍫','🌙','🦋','🎧','🍓','⭐'],g=$('#game');g.innerHTML='<p class="sub" id="mv">Encuentra las 8 parejas. Movimientos: 0</p><div class="grid4"></div>';let cards=[...E,...E].sort(()=>Math.random()-.5),open=[],mv=0,ok=0,lock=0;const gr=g.querySelector('.grid4');
+cards.forEach(c=>{const b=el('button','mc','❔');b.onclick=()=>{if(lock||b.classList.contains('up')||b.classList.contains('ok'))return;b.textContent=c;b.classList.add('up');open.push([b,c]);if(open.length==2){mv++;$('#mv').textContent='Encuentra las 8 parejas. Movimientos: '+mv;const[a,d]=open;if(a[1]==d[1]){a[0].classList.add('ok');d[0].classList.add('ok');open=[];if(++ok==8){toast('¡Las encontraste todas en '+mv+' movimientos! 💙');confetti()}}else{lock=1;setTimeout(()=>{a[0].textContent=d[0].textContent='❔';a[0].classList.remove('up');d[0].classList.remove('up');open=[];lock=0},800)}}};gr.append(b)})}
+function catchG(){const g=$('#game');g.innerHTML=`<p class="sub">Toca los corazones 💙 durante 20 segundos. Evita los 💔. Récord: <b>${S.best.catch}</b></p><p><b id="sc">Puntos: 0</b> · <span id="tm">20</span>s</p><button class="btn" id="st">Empezar</button><div id="field"></div>`;
+$('#st').onclick=()=>{stopCatch();let sc=0,t=20;const f=$('#field');f.innerHTML='';$('#sc').textContent='Puntos: 0';gspawn=setInterval(()=>{const k=Math.random()<.2?'💔':rnd(['💙','💙','💛','🩷']),h=el('span','fall',k);h.dataset.k=k;h.style.left=Math.random()*85+'%';f.append(h);requestAnimationFrame(()=>requestAnimationFrame(()=>h.style.top='300px'));h.onpointerdown=()=>{sc+=h.dataset.k=='💔'?-2:1;$('#sc').textContent='Puntos: '+sc;h.remove()};setTimeout(()=>h.remove(),3300)},500);
+gtimer=setInterval(()=>{$('#tm').textContent=--t;if(t<=0){stopCatch();f.innerHTML='';if(sc>S.best.catch){S.best.catch=sc;save()}toast('Terminaste con '+sc+' puntos');if(sc>0)confetti()}},1000)}}
+const CON=(()=>{const n=Math.PI*2,R=(N,f)=>[...Array(N)].map((_,i)=>f(i*n/N,i)),pt=(cx,cy,r,d)=>{const a=d*Math.PI/180;return[cx+r*Math.cos(a),cy+r*Math.sin(a)]},moon=[];
+for(let k=0;k<=5;k++)moon.push(pt(150,140,100,-51.3-k*51.48));for(let k=1;k<=4;k++)moon.push(pt(195,140,80,77.4+k*41.04));
+return[
+{k:'Corazón',n:'un corazón',c:0,p:R(12,t=>[150+120*Math.pow(Math.sin(t),3),125-7.5*(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t))])},
+{k:'Estrella',n:'una estrella',c:0,p:R(10,(t,i)=>pt(150,145,i%2?48:112,-90+i*36))},
+{k:'Infinito',n:'un infinito',c:0,p:R(12,t=>{t+=Math.PI/12;const d=1+Math.sin(t)**2;return[150+115*Math.cos(t)/d,140+140*Math.sin(t)*Math.cos(t)/d]})},
+{k:'Luna',n:'una luna creciente',c:0,p:moon},
+{k:'Sol',n:'un sol',c:0,p:R(16,(t,i)=>pt(150,140,i%2?62:108,-90+i*22.5))},
+{k:'Diamante',n:'un diamante',c:0,p:[[65,85],[110,40],[190,40],[235,85],[192,170],[150,255],[108,170]]},
+{k:'Corona',n:'una corona',c:0,p:[[50,205],[50,80],[105,140],[150,55],[195,140],[250,80],[250,205]]},
+{k:'Casita',n:'una casita',c:0,p:[[45,130],[150,35],[255,130],[218,130],[218,245],[82,245],[82,130]]},
+{k:'Letra K',n:'la letra K de Kelyneth',c:0,p:[[85,35],[85,245],[125,245],[125,155],[185,245],[235,245],[160,145],[230,35],[182,35],[125,125],[125,35]]},
+{k:'Mariposa',n:'una mariposa',c:0,p:[[150,120],[235,40],[258,100],[185,150],[245,225],[212,248],[150,175],[88,248],[55,225],[115,150],[42,100],[65,40]]},
+{k:'Osa Mayor',n:'la Osa Mayor, una constelación de verdad',c:3,p:[[30,95],[80,110],[125,125],[170,140],[180,205],[255,215],[262,150]]}]})();
+const PH=['Dibujaste un pedacito de cielo, y yo lo dedico a ti.','Entre tantas estrellas, la que más brilla eres tú.','Si pudiera, te bajaba este cielo entero.','Cada estrella que tocaste es un beso mío.','Hasta el cielo se acomoda para decir que te quiero.'];
+function stars(){const g=$('#game');let c;do c=rnd(CON);while(c.k===stars.last);stars.last=c.k;const P=c.p,N=P.length,md=Math.min(...P.flatMap((a,x)=>P.slice(x+1).map(b=>Math.hypot(a[0]-b[0],a[1]-b[1])))),hr=Math.min(21,md/2-1),dr=Math.min(13,md/2-3),NS='http://www.w3.org/2000/svg';let i=0,err=0;
+const bg=[...Array(45)].map(()=>`<circle cx="${Math.random()*300}" cy="${Math.random()*280}" r="${Math.random()*1.2+.3}" fill="#fff" opacity="${Math.random()*.6+.2}"/>`).join('');
+g.innerHTML=`<style>.chip{padding:3px 10px;border-radius:999px;border:1px solid var(--sb);background:#fff;font-size:.8rem;color:#6a7b95}.chip.on{background:var(--g);color:var(--ink);border-color:var(--g);font-weight:700}@keyframes shk{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}.shk{animation:shk .25s}</style><p class="sub">Toca las estrellas en orden, del 1 al ${N}, para dibujar ${c.n}. Completadas: <b id="tc">${S.best.star||0}</b> · Fallos: <b id="er">0</b></p>
+<svg id="sky" viewBox="0 0 300 280" style="width:100%;max-width:420px;display:block;margin:auto;background:linear-gradient(#0f2145,#2d5ca8);border-radius:20px;touch-action:manipulation">${bg}<polygon id="fl" points="" fill="none"/><g id="sg"></g>${P.map((p,k)=>`<g class="st" data-i="${k}" style="cursor:pointer"><circle cx="${p[0]}" cy="${p[1]}" r="${hr}" fill="transparent"/><circle class="dot" cx="${p[0]}" cy="${p[1]}" r="${dr}" fill="#d4af37"/><text x="${p[0]}" y="${p[1]+4}" text-anchor="middle" font-size="12" font-weight="700" fill="#14284b" style="pointer-events:none">${k+1}</text></g>`).join('')}<circle id="nx" cx="${P[0][0]}" cy="${P[0][1]}" r="14" fill="none" stroke="#fff" stroke-width="2" style="pointer-events:none"><animate attributeName="r" values="14;25;14" dur="1.4s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;.2;1" dur="1.4s" repeatCount="indefinite"/></circle></svg>
+<div id="cm" style="text-align:center;margin-top:10px"></div><div class="row" style="justify-content:center;margin:10px 0"><button class="btn ghost" id="nw">Otra constelación</button></div>
+<p class="sub">Tu colección: <b id="cn"></b></p><div class="row" id="cc"></div>`;
+const col=()=>{const d=S.best.con||[];$('#cn').textContent=d.length+' de '+CON.length;$('#cc').innerHTML=CON.map(x=>`<span class="chip${d.includes(x.k)?' on':''}">${x.k}</span>`).join('')};col();
+const ln=(a,b)=>{const l=document.createElementNS(NS,'line'),L=Math.hypot(a[0]-b[0],a[1]-b[1]);l.setAttribute('x1',a[0]);l.setAttribute('y1',a[1]);l.setAttribute('x2',b[0]);l.setAttribute('y2',b[1]);l.setAttribute('stroke','#d4af37');l.setAttribute('stroke-width','3');l.setAttribute('stroke-linecap','round');l.style.cssText=`stroke-dasharray:${L};stroke-dashoffset:${L};transition:stroke-dashoffset .35s`;$('#sg').append(l);requestAnimationFrame(()=>requestAnimationFrame(()=>l.style.strokeDashoffset=0))};
+$('#sky').onclick=e=>{const q=e.target.closest('.st');if(!q||i>=N)return;if(+q.dataset.i!==i){err++;$('#er').textContent=err;const s=$('#sky');s.classList.remove('shk');void s.getBoundingClientRect();s.classList.add('shk');return toast('Busca la estrella '+(i+1))}
+q.querySelector('.dot').setAttribute('fill','#f4d4e6');if(i>0)ln(P[i-1],P[i]);i++;
+if(i<N){$('#nx').setAttribute('cx',P[i][0]);$('#nx').setAttribute('cy',P[i][1]);return}
+$('#nx').remove();if(c.c>=0)setTimeout(()=>ln(P[N-1],P[c.c]),380);if(c.c===0)setTimeout(()=>{$('#fl').setAttribute('points',P.map(p=>p.join(',')).join(' '));$('#fl').setAttribute('fill','#d4af3744')},700);
+S.best.star=(S.best.star||0)+1;S.best.con=S.best.con||[];if(!S.best.con.includes(c.k))S.best.con.push(c.k);save();$('#tc').textContent=S.best.star;col();
+const r=err==0?3:err<=2?2:1;$('#cm').innerHTML=`<h3 style="color:var(--b)">${'⭐'.repeat(r)}${r==3?' ¡Perfecta!':r==2?' ¡Muy bien!':' ¡La lograste!'}</h3><p>${rnd(PH)}</p>`;confetti()};
+$('#nw').onclick=stars}
+
+/* momentos (IndexedDB) */
+let db;const rq=(r)=>new Promise((o,e)=>{r.onsuccess=()=>o(r.result);r.onerror=()=>e(r.error)});
+const open=indexedDB.open('kel_photos',1);open.onupgradeneeded=()=>open.result.createObjectStore('p',{keyPath:'id'});
+const tx=m=>db.transaction('p',m).objectStore('p');
+async function moms(){const all=(await rq(tx('readonly').getAll())).sort((a,b)=>b.id-a.id),w=$('#moms');w.innerHTML='';if(!all.length)w.append(el('p','','Aún no hay momentos. Sube el primero.'));all.forEach(m=>{const d=el('div','mom'),i=new Image();i.src=m.img;i.alt='Momento';const t=el('textarea');t.value=m.c||'';t.onchange=async()=>{m.c=t.value;await rq(tx('readwrite').put(m));toast('Comentario guardado')};const r=el('div','row'),x=el('button','btn ghost','Borrar');x.onclick=async()=>{if(confirm('¿Borrar este momento?')){await rq(tx('readwrite').delete(m.id));moms()}};r.append(el('small','',m.d),x);d.append(i,t,r);w.append(d)})}
+function shrink(f){return new Promise((ok,no)=>{const i=new Image(),u=URL.createObjectURL(f);i.onload=()=>{const k=Math.min(1,1000/Math.max(i.width,i.height)),c=el('canvas');c.width=i.width*k;c.height=i.height*k;c.getContext('2d').drawImage(i,0,0,c.width,c.height);URL.revokeObjectURL(u);ok(c.toDataURL('image/jpeg',.78))};i.onerror=no;i.src=u})}
+$('#addm').onclick=async()=>{const f=$('#pic').files[0];if(!f)return toast('Elige una foto primero');try{const img=await shrink(f);await rq(tx('readwrite').put({id:Date.now(),img,c:$('#cmt').value,d:new Date().toLocaleDateString('es')}));$('#pic').value='';$('#cmt').value='';toast('Momento guardado 📸');moms()}catch(e){toast('No se pudo guardar la foto')}};
+
+/* pregunta */
+const no=$('#no');
+function dodge(e){e.preventDefault();no.style.position='fixed';const w=no.offsetWidth,h=no.offsetHeight;no.style.left=Math.random()*(innerWidth-w-20)+10+'px';no.style.top=Math.random()*(innerHeight-h-120)+10+'px'}
+['mouseover','pointerdown','touchstart','click','focus'].forEach(ev=>no.addEventListener(ev,dodge,{passive:false}));
+$('#yes').onclick=()=>{S.yes=new Date().toLocaleDateString('es');save();no.style.display='none';ask()};
+function ask(){if(S.yes){$('#askres').textContent='Dijiste que sí el '+S.yes+'. Gracias por quedarte conmigo 💙';no.style.display='none';confetti()}}
+
+/* confeti */
+function confetti(){for(let i=0;i<26;i++){const h=el('span','heart',rnd(['💙','💛','🩷','✨']));h.style.left=Math.random()*100+'vw';h.style.top='90vh';h.style.setProperty('--dx',(Math.random()*160-80)+'px');h.style.animationDelay=Math.random()*.5+'s';document.body.append(h);setTimeout(()=>h.remove(),3200)}}
+
+/* deseos y cápsulas */
+function wishes(){const w=$('#wl');w.innerHTML='';S.wish.forEach(x=>{const d=el('div','item');d.append(el('p','',x.t),el('small','',x.d));w.append(d)});const c=$('#cl');c.innerHTML='';S.caps.forEach(x=>{const d=el('div','item'),left=Math.ceil((new Date(x.o+'T00:00')-new Date())/864e5);if(x.o<=day()){d.append(el('b','','🔓 Cápsula abierta ('+x.m+')'),el('p','',x.t))}else d.append(el('b','','🔒 Cerrada hasta el '+x.o),el('small','','Faltan '+left+' día'+(left==1?'':'s')));c.append(d)})}
+$('#wb').onclick=()=>{const t=$('#wt').value.trim();if(!t)return toast('Escribe tu deseo primero');S.wish.unshift({t,d:new Date().toLocaleDateString('es')});save();$('#wt').value='';document.body.append(el('i','shoot'));setTimeout(()=>$('.shoot').remove(),1400);confetti();toast('Tu deseo viajó a las estrellas 🌠');wishes()};
+const tm=new Date();tm.setDate(tm.getDate()+1);$('#cd').min=day().slice(0,0)+tm.getFullYear()+'-'+String(tm.getMonth()+1).padStart(2,'0')+'-'+String(tm.getDate()).padStart(2,'0');
+$('#cb').onclick=()=>{const t=$('#ct').value.trim(),o=$('#cd').value;if(!t||!o)return toast('Escribe el mensaje y elige una fecha');if(o<=day())return toast('Elige una fecha futura');S.caps.unshift({id:Date.now(),t,o,m:new Date().toLocaleDateString('es')});save();$('#ct').value='';$('#cd').value='';toast('Cápsula cerrada ⏳');wishes()};
+$('#hh').onclick=()=>{confetti();tick()};
+
+/* chispas al tocar y corazones flotantes */
+function spark(x,y,n){for(let i=0;i<n;i++){const p=el('i','sp');p.style.left=x+'px';p.style.top=y+'px';p.style.setProperty('--dx',(Math.random()*70-35)+'px');p.style.setProperty('--dy',(Math.random()*70-35)+'px');document.body.append(p);setTimeout(()=>p.remove(),750)}}
+addEventListener('pointerdown',e=>spark(e.clientX,e.clientY,6));let lm=0;addEventListener('pointermove',e=>{if(e.pointerType==='mouse'&&Date.now()-lm>90){lm=Date.now();spark(e.clientX,e.clientY,1)}});
+for(let i=0;i<7;i++){const f=el('span','float',rnd(['💙','💛','🩷','✨']));f.style.left=Math.random()*95+'%';f.style.animationDuration=(18+Math.random()*16)+'s';f.style.animationDelay=(-Math.random()*20)+'s';document.body.append(f)}
+
+/* emojis 3D (Fluent Emoji 3D); si no cargan, se ven los emojis normales */
+const EM={'💙':'Blue heart','💛':'Yellow heart','🩷':'Pink heart','🤍':'White heart','💔':'Broken heart','❤':'Red heart','🫙':'Jar','🎡':'Ferris wheel','🎟':'Admission tickets','🎮':'Video game','📸':'Camera with flash','💌':'Love letter','🌹':'Rose','🍫':'Chocolate bar','🌙':'Crescent moon','🦋':'Butterfly','🎧':'Headphone','🍓':'Strawberry','⭐':'Star','❔':'White question mark','✨':'Sparkles','🥰':'Smiling face with hearts','🎉':'Party popper','📖':'Open book','✅':'Check mark button','🌠':'Shooting star','⏳':'Hourglass not done','🔒':'Locked','🔓':'Unlocked'};
+const RX=new RegExp('('+Object.keys(EM).join('|')+')\uFE0F?','g'),T=new RegExp(RX.source);
+const mk=c=>{const i=new Image();i.className='e3';i.alt=c;const n=EM[c];i.src='https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/'+encodeURIComponent(n)+'/3D/'+n.toLowerCase().replace(/ /g,'_')+'_3d.png';i.onerror=()=>i.replaceWith(el('span','e-fb',c));return i};
+function e3(root){const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),L=[];while(w.nextNode())L.push(w.currentNode);L.forEach(t=>{const p=t.parentNode;if(!p||/^(TEXTAREA|INPUT|SCRIPT|STYLE|TITLE|OPTION)$/.test(p.tagName)||p.closest('.e-fb')||!T.test(t.nodeValue))return;const f=document.createDocumentFragment(),v=t.nodeValue;let last=0;v.replace(RX,(m,c,o)=>{f.append(v.slice(last,o),mk(c));last=o+m.length;return m});f.append(v.slice(last));p.replaceChild(f,t)})}
+let q=0;new MutationObserver(()=>{if(q)return;q=requestAnimationFrame(()=>{q=0;e3(document.body)})}).observe(document.body,{childList:true,subtree:true,characterData:true});e3(document.body);
+
+/* respaldo */
+$('#exp').onclick=async()=>{const p=await rq(tx('readonly').getAll()),a=el('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({S,p})]));a.download='mi_espacio.json';a.click()};
+$('#imp').onchange=async e=>{try{const j=JSON.parse(await e.target.files[0].text());S=Object.assign(S,j.S);S.ok=1;save();for(const m of j.p)await rq(tx('readwrite').put(m));toast('Copia restaurada');boot()}catch(x){toast('Archivo no válido')}};
+
+/* app instalable */
+if('serviceWorker' in navigator&&location.protocol.startsWith('http'))addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+let dip;addEventListener('beforeinstallprompt',e=>{e.preventDefault();dip=e;$('#inst').style.display=''});
+$('#inst').onclick=async()=>{if(!dip)return;dip.prompt();await dip.userChoice;dip=null;$('#inst').style.display='none'};
+addEventListener('appinstalled',()=>{$('#inst').style.display='none';toast('¡App instalada! 💙')});
+if(/iphone|ipad/i.test(navigator.userAgent)&&!navigator.standalone){const t=el('p','sub','Para instalarla en iPhone: botón Compartir y luego "Añadir a pantalla de inicio".');$('#inst').parentNode.before(t)}
+function boot(){letters();wishes();renderFavs();renderAns();vales();ask();tick();setInterval(tick,1000);mem();if(open.readyState==='done'){db=open.result;moms()}}
+open.onsuccess=()=>{db=open.result;if(S.ok)moms()};
+if(S.ok)enter();
+
+</script></body></html>
